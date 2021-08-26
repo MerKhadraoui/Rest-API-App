@@ -16,18 +16,18 @@ const dcitDataSchema = new mongoose.Schema({
   },
   age: {
     type: Number,
-    //required: true,
+
     required: [true, "Write age please"],
   },
   fbw: {
     type: Number,
-    //required: true,
+
     required: [true, "Write "],
   },
-  toolStack: String,
+  toolStack: Array,
   email: {
     type: String,
-    //required: true,
+
     required: [true, "Enter your email"],
   },
   studantAddedDate: {

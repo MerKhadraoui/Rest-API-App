@@ -1,4 +1,5 @@
 const express = require("express");
+const { modelName } = require("../model/studentModel");
 const displayRouter = express.Router();
 const StudentDATA = require("../model/studentModel");
 
