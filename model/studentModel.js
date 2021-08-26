@@ -36,4 +36,4 @@ const dcitDataSchema = new mongoose.Schema({
     default: Date.now,
   },
 });
-module.exports = mongoose.model("studentDATA", dcitDataSchema);
+module.exports = mongoose.model("StudentDATA", dcitDataSchema);
