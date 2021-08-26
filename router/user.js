@@ -1,9 +1,11 @@
 const express = require("express");
 const userRouter = express.Router();
 const StudentDATA = require("../model/studentModel");
+const {
+  getAllstudents,
+  addStudentData,
+} = require("../controllers/dciStudentContoller");
 
-userRouter.get("/", (req, res) => {
-  res.status(200).json({ messege: "this  get user data" });
-});
+userRouter.route("/").get(getAllstudents).post(addStudentData);
 
 module.exports = userRouter;

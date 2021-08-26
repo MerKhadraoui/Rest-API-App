@@ -12,7 +12,7 @@ const dcitDataSchema = new mongoose.Schema({
 
     trim: true,
 
-    required: [true, "Name is must"],
+    required: [true, "passWord is must"],
   },
   age: {
     type: Number,
@@ -22,15 +22,15 @@ const dcitDataSchema = new mongoose.Schema({
   fbw: {
     type: Number,
     //required: true,
-    required: [true, "Write age please"],
+    required: [true, "Write "],
   },
-  toolStack: Array,
+  toolStack: String,
   email: {
     type: String,
     //required: true,
     required: [true, "Enter your email"],
   },
-  employeeAddedDate: {
+  studantAddedDate: {
     type: Date,
     required: true,
     default: Date.now,
