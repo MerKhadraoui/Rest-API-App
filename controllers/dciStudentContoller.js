@@ -49,5 +49,49 @@ const addStudentData = async (req, res) => {
     });
   }
 };
-
-module.exports = { getAllstudents, addStudentData };
+const getOneStudent = async (req, res) => {
+  try {
+    let oneStudent = await StudentDATA.findOne({
+      userName: req.params.userName,
+    });
+    res.status(200).json(res.oneStudent);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+const updateOneStudent = async (req, res) => {
+  const { userName, userPass, age, fbw, email } = req.body;
+  if (userName) {
+    res.student.userName = userName;
+  }
+  if (userPass) {
+    res.student.userPass = userPass;
+  }
+  if (age) {
+    res.student.age = age;
+  }
+  if (fbw) {
+    res.student.fbw = fbw;
+  }
+  if (toolStack) {
+    res.student.toolStack = toolStack;
+  }
+  if (email) {
+    res.student.email = email;
+  }
+  try {
+    // save
+    await res.student.save();
+    // 200 for Successful OK
+    res.status(200).json({ message: "data updated", data: res.student });
+  } catch (err) {
+    // 400 for Bad request
+    res.status(400).json({ message: err.message });
+  }
+};
+module.exports = {
+  getAllstudents,
+  addStudentData,
+  getOneStudent,
+  updateOneStudent,
+};
