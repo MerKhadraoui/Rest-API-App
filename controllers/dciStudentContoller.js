@@ -9,7 +9,7 @@ const getAllstudents = async (req, res) => {
       students.map((student) => {
         return {
           studentId: student._id,
-          studentName: student.userName,
+          userName: student.userName,
           userPass: student.userPass,
           age: student.age,
           fbw: student.fbw,
@@ -99,22 +99,23 @@ const updateOneStudent = async (req, res) => {
   }
 };
 const udatAttStudentData = async (req, res) => {
+  let apdatStuden;
   try {
-    await StudentDATA.updateOne(
-      { userName, userPass, age, fbw, email },
+    apdatStuden = await StudentDATA.updateOne(
+      { userName: req.params.userName },
       {
         $set: {
-          userName: req.body.userName,
           userPass: req.body.userPass,
           age: req.body.age,
           fbw: req.body.fbw,
           email: req.body.email,
         },
-        $currentDate: {
-          studantAddedDate: Date.now,
-        },
+        // $currentDate: {
+        //   studantAddedDate: Date.now,
+        // },
       }
     );
+    console.log(apdatStuden);
     res.status(200).json({ message: "Student Data Got updates" });
   } catch (err) {
     res.status(400).json({ message: err.message });
