@@ -49,18 +49,27 @@ const addStudentData = async (req, res) => {
     });
   }
 };
-const getOneStudent = async (req, res) => {
+const getOneStudent = async (req, res, next) => {
+  let student;
   try {
-    let oneStudent = await StudentDATA.findOne({
+    student = await StudentDATA.findOne({
       userName: req.params.userName,
     });
-    res.status(200).json(res.oneStudent);
+
+    if (student == null) {
+      // NOt found
+      console.log(res.student);
+      return res.status(404).json({ message: "Sorry, data NOT FOUND." });
+    }
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
+
+  res.student = student;
+  next();
 };
 const updateOneStudent = async (req, res) => {
-  const { userName, userPass, age, fbw, email } = req.body;
+  const { userName, userPass, age, fbw, toolStack, email } = req.body;
   if (userName) {
     res.student.userName = userName;
   }
@@ -89,9 +98,32 @@ const updateOneStudent = async (req, res) => {
     res.status(400).json({ message: err.message });
   }
 };
+const udatAttStudentData = async (req, res) => {
+  try {
+    await StudentDATA.updateOne(
+      { userName, userPass, age, fbw, email },
+      {
+        $set: {
+          userName: req.body.userName,
+          userPass: req.body.userPass,
+          age: req.body.age,
+          fbw: req.body.fbw,
+          email: req.body.email,
+        },
+        $currentDate: {
+          studantAddedDate: Date.now,
+        },
+      }
+    );
+    res.status(200).json({ message: "Student Data Got updates" });
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+};
 module.exports = {
   getAllstudents,
   addStudentData,
   getOneStudent,
   updateOneStudent,
+  udatAttStudentData,
 };
