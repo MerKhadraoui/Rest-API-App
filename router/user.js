@@ -9,7 +9,7 @@ const {
   udatAttStudentData,
 } = require("../controllers/dciStudentContoller");
 
-//userRouter.route("/").get(getAllstudents).post(addStudentData);
-userRouter.route("/:userName").get(getOneStudent, udatAttStudentData);
+userRouter.route("/").get(getAllstudents).post(addStudentData);
+userRouter.route("/:userName").put(getOneStudent, udatAttStudentData);
 
 module.exports = userRouter;
