@@ -2,9 +2,13 @@ const express = require("express");
 const userRouter = express.Router();
 const StudentDATA = require("../model/studentModel");
 const {
+  getOneStudent,
+  studentAge,
+  studentFBW,
+} = require("../middleware/middlewares");
+const {
   getAllstudents,
   addStudentData,
-  getOneStudent,
   updateOneStudent,
   udatAttStudentData,
 } = require("../controllers/dciStudentContoller");

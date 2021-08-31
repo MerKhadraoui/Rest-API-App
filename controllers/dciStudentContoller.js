@@ -49,25 +49,7 @@ const addStudentData = async (req, res) => {
     });
   }
 };
-const getOneStudent = async (req, res, next) => {
-  let student;
-  try {
-    student = await StudentDATA.findOne({
-      userName: req.params.userName,
-    });
 
-    if (student == null) {
-      // NOt found
-      console.log(res.student);
-      return res.status(404).json({ message: "Sorry, data NOT FOUND." });
-    }
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
-
-  res.student = student;
-  next();
-};
 const updateOneStudent = async (req, res) => {
   const { userName, userPass, age, fbw, toolStack, email } = req.body;
   if (userName) {
@@ -124,7 +106,7 @@ const udatAttStudentData = async (req, res) => {
 module.exports = {
   getAllstudents,
   addStudentData,
-  getOneStudent,
+
   updateOneStudent,
   udatAttStudentData,
 };
