@@ -106,7 +106,6 @@ const udatAttStudentData = async (req, res) => {
 module.exports = {
   getAllstudents,
   addStudentData,
-
   updateOneStudent,
   udatAttStudentData,
 };
