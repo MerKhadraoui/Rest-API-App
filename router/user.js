@@ -13,10 +13,10 @@ const {
   udatAttStudentData,
 } = require("../controllers/dciStudentContoller");
 
-userRouter.route("/").get(getAllstudents).post(addStudentData);
+userRouter.route("/").get(getAllstudents).post(studentAge, addStudentData);
 userRouter
   .route("/:userName")
-  .put(getOneStudent, udatAttStudentData)
+  .put(getOneStudent, studentAge, udatAttStudentData)
   .patch(getOneStudent, updateOneStudent);
 
 module.exports = userRouter;

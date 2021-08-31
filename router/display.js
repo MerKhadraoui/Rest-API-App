@@ -9,5 +9,5 @@ const {
 displayRouter.get("/", (req, res) => {
   res.status(200).json({ messege: "this  display data" });
 });
-displayRouter.route("/:userName").get(getOneStudent);
+//displayRouter.route("/:userName").get(getOneStudent);
 module.exports = displayRouter;

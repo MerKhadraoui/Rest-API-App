@@ -35,12 +35,12 @@ const addStudentData = async (req, res) => {
     fbw: req.body.fbw,
     email: req.body.email,
   });
-  console.log("this is student" + student);
+  // console.log("this is student" + student);
   try {
     // save
 
     const newStudent = await student.save();
-    console.log("this new data " + student);
+    //console.log("this new data " + student);
     // 201 for Successful Created
     res.status(201).json(newStudent);
   } catch (err) {
@@ -49,7 +49,6 @@ const addStudentData = async (req, res) => {
     });
   }
 };
-
 const updateOneStudent = async (req, res) => {
   const { userName, userPass, age, fbw, toolStack, email } = req.body;
   if (userName) {
